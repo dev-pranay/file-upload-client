@@ -1,0 +1,51 @@
+<div class="row h-100 justify-content-center align-items-center">
+    <div class="col-md-12">
+        <section class="p-4 mb-5">
+            <div class="row justify-content-md-center">
+                <div class="col-md-12 p-4">
+                    <h1>Registration form</h1>
+
+                    <form [formGroup]="form" #AdminInformation (ngSubmit)="AdminForm(AdminInformation)">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="formGroup">
+                                    <div class="col-md-offset-1 col-md-10">
+                                        <label for="fullName"> Name </label>
+                                        <input formControlName="fullName" class="form-control" type="text" title="Enter full name" placeholder="Full Name" />
+                                        <div class="alert alert-danger" *ngIf="(FullName.touched) && (FullName.invalid)" style="margin-top: 5px;">
+                                            <span *ngIf="FullName.errors.required">Full Name is required</span>
+                                            <span *ngIf="FullName.errors.minlength">Full Name should be more than 5 characters long</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="formGroup">
+                                    <div class="col-md-offset-1 col-md-10">
+                                        <label for="email"> Email </label>
+                                        <input formControlName="email" class="form-control" type="text" title="Enter your email" placeholder="Email" />
+                                        <div class="alert alert-danger" *ngIf="(Email.touched) && (Email.invalid)" style="margin-top: 5px;">
+                                            <span *ngIf="Email.errors.required">Email is required</span>
+                                            <span *ngIf="Email.errors.email">Invalid Email Format</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="formGroup">
+                                    <div class="col-md-offset-1 col-md-10">
+                                        <label for="profileImage">Upload Image</label>
+                                        <input formControlName="profileImage" class="form-control" type="file" required (change)="selectFile($event)">
+                                    </div>
+                                </div>
+
+                                <div class="formGroup" style="margin-top: 40px;">
+                                    <div class="col-md-offset-1 col-md-4">
+                                        <button class="btn btn-md btn-primary btn-style">Save</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
